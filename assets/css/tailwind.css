@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@theme {
+    /* text color  => text-white, bg-tahiti, bg-alert-red */
+    --color-midnight: #121063;
+    --color-tahiti: #3ab7bf;
+    --color-bermuda: #78dcca;
+    --color-regal-blue: #243c5a; 
+    
+    --color-alert-red: #f22222;
+    --color-alert-warning: #ffff00;
+
+    --color-white: #fff; 
+
+    /* font family => font-display */
+    --font-display: "Oswald", "sans-serif"; 
+
+    /* font weight => font-bold, font-normal */
+    --font-weight-bold: 1000; 
+    --font-weight-normal: 500; 
+    --font-weight-thin: 200; 
+  }
