@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1> My favorite Fruits </h1>
-        <ul>
+        <h1> This is vfor demo page </h1>
+        <ul class="m-[10px] border rounded-md p-2 w-[300px] shadow-md">
             <li v-for="(fruit, index) in fruits" :key="index" >
                 {{ fruit }}
             </li>

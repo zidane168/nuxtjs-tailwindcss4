@@ -1,7 +1,7 @@
 <template>
     <div>
       <button @click="toggle">Toggle Message</button>
-      <p v-if="isVisible">Hello, this is a conditional message!</p>
+      <p v-if="isVisible">Hello, this is a vif Demo page!</p>
     </div>
   </template>
   
