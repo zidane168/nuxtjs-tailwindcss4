@@ -2,7 +2,7 @@
   <div> 
       <NuxtLayout>
         
-        <div class="p-[10px]  text-[30px]   border text-red-300 ">
+        <div class="p-[10px]  text-[30px]   border text-alert-red ">
           Let check using for tailwind format!!!
         </div>
 
