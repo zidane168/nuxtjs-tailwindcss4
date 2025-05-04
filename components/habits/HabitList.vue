@@ -29,9 +29,13 @@
 
 <script setup>
 import { useHabitStore } from '~/stores/habits';
-
+import { format } from 'date-fns'
 
 const habitStore = useHabitStore()
+await habitStore.fetchHabits();
+
+const habits = habitStore.habits
+console.log (habits) 
 
 const deleteHabit = async(id) => {
     await habitStore.deleteHabit(id)

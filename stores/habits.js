@@ -1,6 +1,7 @@
 
-import { addDoc, collection, getDocs, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, getDocs, updateDoc } from 'firebase/firestore';
 import { defineStore } from 'pinia'
+import { format, differenceInDays } from 'date-fns'
 
 export const useHabitStore = defineStore('habitStore', {
     state: () => ({
@@ -10,13 +11,10 @@ export const useHabitStore = defineStore('habitStore', {
         // fetching all habits
         async fetchHabits() {
             const { $db } = useNuxtApp()
-
-            const list = await getDocs(collection($db, 'habits'))
-            this.habits = list.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data()
-            }))
-        },
+      
+            const snapshot = await getDocs(collection($db, 'habits'))
+            this.habits = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+          },
 
         // adding new habits
         async addHabit(name) {
@@ -54,7 +52,7 @@ export const useHabitStore = defineStore('habitStore', {
             const { $db } = useNuxtApp()
 
             const doc = doc($db, 'habits', id)
-            await this.deleteHabit(doc)
+            await deleteDoc(doc)
 
             this.habits = this.habits.filter(habit => habit.id !== id)
         },
