@@ -1,3 +1,28 @@
+
+<script lang="js" setup>
+import { UButton, UInput } from '#components';
+import { ref } from 'vue'
+import { useHabitStore } from '~/stores/habits';
+
+const name = ref('')        
+const habitStore = useHabitStore()
+
+const handleSubmit = async() => { 
+    console.log(name.value)
+
+    if (name.value.trim()) {
+        console.log(name.value) 
+        await habitStore.addHabit(name.value)  
+        const toast = useToast() 
+        toast.add({
+            title: 'Add Habit: ' + name.value + ' Successfully!!!'
+        }) 
+        name.value = '';
+    }
+}
+
+</script> 
+
 <template>
     <div class="mt-[100px] justify-center flex flex-col items-center">
       
@@ -9,20 +34,3 @@
         </form> 
     </div>    
 </template>
-
-<script lang="js" setup>
-import { UButton, UInput } from '#components';
-import { ref } from 'vue'
-import { useHabitStore } from '~/stores/habits';
-
-const name = ref('')
-// const habitStore = useHabitStore()
-
-const handleSubmit = async() => { 
-    if (name.value.trim()) {
-        console.log(name.value)
-        name.value = '';
-    }
-}
-
-</script>
