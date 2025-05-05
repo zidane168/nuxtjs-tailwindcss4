@@ -18,8 +18,7 @@
 </script>
 
 <template>
-    <h1 class="font-display"> Here is events index pages </h1> 
- 
+    <h1 class="font-display"> Here is events index pages </h1>  
 
     <UAlert
         title="Heads up!"

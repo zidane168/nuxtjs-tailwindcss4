@@ -1,7 +1,7 @@
 <template>
     <div class="mt-[100px] justify-center flex flex-col items-center">
         <div> 
-            This is example using Pinia Firebase NuxtJS 
+            This is example using: Pinia - Firebase - NuxtJS - Dummyjson
         </div>
         <HabitForm />
         <HabitList />

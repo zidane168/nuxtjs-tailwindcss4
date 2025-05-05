@@ -5,16 +5,43 @@ import { format, differenceInDays } from 'date-fns'
 
 export const useHabitStore = defineStore('habitStore', {
     state: () => ({
-        habits: []
+        habits: [],
+        loading: false, 
+        error: null
     }),
     actions: {  // actions có s, ko có s là bi sai luôn nha
         // fetching all habits
-        async fetchHabits() {
-            const { $db } = useNuxtApp()
-      
+
+        async fetchHabits() { // using the dummyjson  
+            this.loading = true;
+            this.error = null;
+            try {
+                const url = "https://dummyjson.com/todos"       // cannot use the firebase/firestore so i use this one for demo
+                const response = await fetch(url)
+    
+                if (!response.ok) {
+                    throw new Error("Network response was not ok")
+                }
+    
+                const data = await response.json() 
+                this.habits = data.todos;
+
+                console.log(' -------- ')
+                console.log( this.habits  )
+                console.log( '---------')
+
+            } catch (err) {
+                this.error = err.message
+            } finally {
+                this.loading = false
+            } 
+        }, 
+
+        async fetchHabits2() {
+            const { $db } = useNuxtApp() 
             const snapshot = await getDocs(collection($db, 'habits'))
             this.habits = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-          },
+        },
 
         // adding new habits
         async addHabit(name) {
@@ -23,7 +50,7 @@ export const useHabitStore = defineStore('habitStore', {
 
             const { $db } = useNuxtApp();
             const habit = {
-                name: name, 
+                todo: name, 
                 completions: [],
                 streak: 0,
             }
