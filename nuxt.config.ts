@@ -36,16 +36,14 @@ export default defineNuxtConfig({
   i18n: { 
     lazy: true, 
     langDir: 'locales',
-    strategy: "prefix_and_default", // prefix trên moi url domain/zh-TW/languages
+    strategy: 'no_prefix',
+    // strategy: "prefix_and_default", // prefix trên moi url domain/zh-TW/languages
     locales: [
       { code: 'en-US', iso: 'en-US', name: 'English', 'file': 'en-US.json' },
       { code: 'vi-VN', iso: 'vi_VN', name: 'Tiếng Việt', 'file': 'vi-VN.json' },
       { code: 'zh-TW', iso: 'zh-TW', name: '繁體中文', 'file': 'zh-TW.json' },
     ],
-    defaultLocale: 'vi-VN',  
-    vueI18n: {
-      fallbackLocale: "en-US"
-    },
+    defaultLocale: 'vi-VN',   
   },
 
   vite:  {
